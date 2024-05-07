@@ -1,53 +1,36 @@
 import { type TokenCacheContext } from "@azure/msal-node";
-import fs from "fs";
+import { Entry } from "@napi-rs/keyring";
+import os from "os";
 
 /**
  * Cache Plugin configuration
  */
 
-export function cachePluginFactory() {
+export function cachePluginFactory(tenantId: string) {
+  const user = os.userInfo().username;
+  const key = `ado-pat:${tenantId}`;
+  const entry = new Entry(key, user);
+
   const beforeCacheAccess = (cacheContext: TokenCacheContext) => {
-    return new Promise((resolve, reject) => {
-      if (fs.existsSync(cacheLocation)) {
-        fs.readFile(cacheLocation, "utf-8", (err, data) => {
-          if (err) {
-            reject(err);
-          } else {
-            cacheContext.tokenCache.deserialize(data);
-            resolve();
-          }
-        });
+    return new Promise<void>((resolve, reject) => {
+      const token = entry.getPassword();
+      if (token) {
+        cacheContext.tokenCache.deserialize(token);
       } else {
-        fs.writeFile(
-          cacheLocation,
-          cacheContext.tokenCache.serialize(),
-          (err) => {
-            if (err) {
-              reject(err);
-            }
-            resolve();
-          }
-        );
+        entry.setPassword(cacheContext.tokenCache.serialize());
       }
+
+      resolve();
     });
   };
 
-  const afterCacheAccess = (cacheContext) => {
-    return new Promise((resolve, reject) => {
+  const afterCacheAccess = (cacheContext: TokenCacheContext) => {
+    return new Promise<void>((resolve, reject) => {
       if (cacheContext.cacheHasChanged) {
-        fs.writeFile(
-          cacheLocation,
-          cacheContext.tokenCache.serialize(),
-          (err) => {
-            if (err) {
-              reject(err);
-            }
-            resolve();
-          }
-        );
-      } else {
-        resolve();
+        entry.setPassword(cacheContext.tokenCache.serialize());
       }
+
+      resolve();
     });
   };
 

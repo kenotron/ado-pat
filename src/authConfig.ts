@@ -21,7 +21,7 @@ export function getAuthConfig({
   url.hostname = "login.microsoftonline.com";
   url.pathname = tenantId;
 
-  const cachePlugin = cachePluginFactory();
+  const cachePlugin = cachePluginFactory(tenantId);
 
   return {
     auth: {

@@ -4,7 +4,7 @@ const webpack = require("webpack");
 module.exports = {
   entry: "./src/index.ts",
   output: {
-    filename: "index.cjs",
+    filename: "index.js",
     path: path.join(__dirname, "dist"),
   },
   resolve: {
