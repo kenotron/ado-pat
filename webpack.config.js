@@ -1,12 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-module.exports = {
-  entry: "./src/cli.ts",
-  output: {
-    filename: "index.js",
-    path: path.join(__dirname, "dist"),
-  },
+const common = {
   resolve: {
     extensions: [".ts", ".js"],
   },
@@ -45,3 +40,25 @@ module.exports = {
     "@azure/msal-node-extensions": "commonjs @azure/msal-node-extensions",
   },
 };
+
+module.exports = [
+  {
+    entry: "./src/cli.ts",
+    output: {
+      filename: "index.js",
+      path: path.join(__dirname, "dist"),
+    },
+    ...common,
+  },
+  {
+    entry: "./src/index.ts",
+    output: {
+      filename: "main.js",
+      path: path.join(__dirname, "dist"),
+      library: {
+        type: "umd",
+      },
+    },
+    ...common,
+  },
+];

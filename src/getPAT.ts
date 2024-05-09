@@ -1,17 +1,17 @@
 interface GetPATOptions {
   organization: string;
-  displayName: string;
-  scope: string;
+  displayName?: string;
+  scope?: string;
   validTo?: Date;
-  entraIdToken: string;
+  token: string;
 }
 
 export async function getPAT({
   organization,
-  displayName,
+  displayName = "ado-pat",
   validTo,
   scope = "vso.packaging_write",
-  entraIdToken,
+  token,
 }: GetPATOptions) {
   if (!validTo) {
     validTo = new Date(Date.now() + 60 * 60 * 24 * 30 * 1000);
@@ -23,7 +23,7 @@ export async function getPAT({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${entraIdToken}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         allOrgs: false,

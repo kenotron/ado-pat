@@ -15,12 +15,18 @@ const openBrowser = async (url: string) => {
 
 const adoScope = "499b84ac-1321-427f-aa17-267ca6975798/.default";
 
-export async function acquireEntraIdToken({ tenantId }: { tenantId: string }) {
+interface Options {
+  tenantId?: string;
+}
+
+export async function acquireEntraIdToken(options?: Options) {
+  options = options || {};
+
   const cachePlugin = await createTokenCachePlugin({ accountName: "ado-pat" });
 
   const pca = new PublicClientApplication({
     ...getAuthConfig({
-      tenantId,
+      tenantId: options.tenantId,
     }),
     cache: { cachePlugin },
   });

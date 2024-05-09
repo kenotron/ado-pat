@@ -6,7 +6,7 @@ const TENANT_ID_MICROSOFT = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
 interface AuthConfigOptions {
   clientId?: string;
-  tenantId: string;
+  tenantId?: string;
 }
 
 export function getAuthConfig({

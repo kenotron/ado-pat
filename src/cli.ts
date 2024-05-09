@@ -48,7 +48,7 @@ async function action({ tenantId, organization, displayName }: Options) {
         organization,
         scope: "vso.packaging_write",
         displayName,
-        entraIdToken: tokenResponse.accessToken,
+        token: tokenResponse.accessToken,
       })
     )
   );
