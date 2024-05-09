@@ -31,5 +31,8 @@
   "files": [
     "dist/**",
     "lib/**"
-  ]
+  ],
+  "repository": {
+    "url": "https://github.com/kenotron/ado-pat"
+  }
 }

@@ -32,3 +32,15 @@ Options:
   -h, --help                         display help for command
 ```
 
+## Usage as Node.js API
+
+(for now, this is a CommonJS package)
+
+```js
+const { getPAT, acquireEntraIdToken } = require("ado-pat");
+const token = await acquireEntraIdToken();
+const pat = await getPAT({
+  organization: "your org",
+  token: token.accessToken,
+});
+```
