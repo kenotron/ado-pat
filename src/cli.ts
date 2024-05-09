@@ -1,6 +1,7 @@
 import { acquireEntraIdToken } from "./acquireEntraIdToken";
 import { Command } from "commander";
 import { getPAT } from "./getPAT";
+import { logger } from "./logger";
 
 async function main() {
   try {
@@ -20,7 +21,7 @@ async function main() {
 
     await program.parseAsync(process.argv);
   } catch (e) {
-    console.error(e);
+    logger.error(e);
     process.exit(1);
   }
 }
@@ -36,10 +37,8 @@ async function action({ tenantId, organization, displayName }: Options) {
     tenantId,
   });
 
-  console.log(tokenResponse);
-
   if (!tokenResponse) {
-    console.error("Failed to acquire token");
+    logger.error("Failed to acquire token");
     process.exit(1);
   }
 

@@ -7,6 +7,7 @@ import {
 import open from "open";
 import { getAuthConfig } from "./authConfig";
 import { createTokenCachePlugin } from "./createTokenCachePlugin";
+import { logger } from "./logger";
 
 const openBrowser = async (url: string) => {
   open(url);
@@ -37,8 +38,6 @@ export async function acquireEntraIdToken({ tenantId }: { tenantId: string }) {
       scopes: [adoScope],
     };
 
-    console.log("Acquiring token silently for account:", accounts[0].username);
-
     return pca.acquireTokenSilent(silentRequest).catch((e) => {
       if (e instanceof InteractionRequiredAuthError) {
         return pca.acquireTokenInteractive(loginRequest);
@@ -46,10 +45,10 @@ export async function acquireEntraIdToken({ tenantId }: { tenantId: string }) {
     });
   } else if (accounts.length > 1) {
     accounts.forEach((account) => {
-      console.log(account.username);
+      logger.info(account.username);
     });
     return Promise.reject(
-      "Multiple accounts found. Please select an account to use."
+      "Multiple accounts found. Please select an account to use (not implemented yet)."
     );
   } else {
     return pca.acquireTokenInteractive(loginRequest);
