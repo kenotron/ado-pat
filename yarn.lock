@@ -122,135 +122,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@napi-rs/keyring-darwin-arm64@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-darwin-arm64@npm:1.1.6"
-  conditions: os=darwin & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-darwin-x64@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-darwin-x64@npm:1.1.6"
-  conditions: os=darwin & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-freebsd-x64@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-freebsd-x64@npm:1.1.6"
-  conditions: os=freebsd & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-linux-arm-gnueabihf@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-linux-arm-gnueabihf@npm:1.1.6"
-  conditions: os=linux & cpu=arm
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-linux-arm64-gnu@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-linux-arm64-gnu@npm:1.1.6"
-  conditions: os=linux & cpu=arm64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-linux-arm64-musl@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-linux-arm64-musl@npm:1.1.6"
-  conditions: os=linux & cpu=arm64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-linux-riscv64-gnu@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-linux-riscv64-gnu@npm:1.1.6"
-  conditions: os=linux & cpu=riscv64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-linux-x64-gnu@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-linux-x64-gnu@npm:1.1.6"
-  conditions: os=linux & cpu=x64 & libc=glibc
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-linux-x64-musl@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-linux-x64-musl@npm:1.1.6"
-  conditions: os=linux & cpu=x64 & libc=musl
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-win32-arm64-msvc@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-win32-arm64-msvc@npm:1.1.6"
-  conditions: os=win32 & cpu=arm64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-win32-ia32-msvc@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-win32-ia32-msvc@npm:1.1.6"
-  conditions: os=win32 & cpu=ia32
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring-win32-x64-msvc@npm:1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring-win32-x64-msvc@npm:1.1.6"
-  conditions: os=win32 & cpu=x64
-  languageName: node
-  linkType: hard
-
-"@napi-rs/keyring@npm:^1.1.6":
-  version: 1.1.6
-  resolution: "@napi-rs/keyring@npm:1.1.6"
-  dependencies:
-    "@napi-rs/keyring-darwin-arm64": "npm:1.1.6"
-    "@napi-rs/keyring-darwin-x64": "npm:1.1.6"
-    "@napi-rs/keyring-freebsd-x64": "npm:1.1.6"
-    "@napi-rs/keyring-linux-arm-gnueabihf": "npm:1.1.6"
-    "@napi-rs/keyring-linux-arm64-gnu": "npm:1.1.6"
-    "@napi-rs/keyring-linux-arm64-musl": "npm:1.1.6"
-    "@napi-rs/keyring-linux-riscv64-gnu": "npm:1.1.6"
-    "@napi-rs/keyring-linux-x64-gnu": "npm:1.1.6"
-    "@napi-rs/keyring-linux-x64-musl": "npm:1.1.6"
-    "@napi-rs/keyring-win32-arm64-msvc": "npm:1.1.6"
-    "@napi-rs/keyring-win32-ia32-msvc": "npm:1.1.6"
-    "@napi-rs/keyring-win32-x64-msvc": "npm:1.1.6"
-  dependenciesMeta:
-    "@napi-rs/keyring-darwin-arm64":
-      optional: true
-    "@napi-rs/keyring-darwin-x64":
-      optional: true
-    "@napi-rs/keyring-freebsd-x64":
-      optional: true
-    "@napi-rs/keyring-linux-arm-gnueabihf":
-      optional: true
-    "@napi-rs/keyring-linux-arm64-gnu":
-      optional: true
-    "@napi-rs/keyring-linux-arm64-musl":
-      optional: true
-    "@napi-rs/keyring-linux-riscv64-gnu":
-      optional: true
-    "@napi-rs/keyring-linux-x64-gnu":
-      optional: true
-    "@napi-rs/keyring-linux-x64-musl":
-      optional: true
-    "@napi-rs/keyring-win32-arm64-msvc":
-      optional: true
-    "@napi-rs/keyring-win32-ia32-msvc":
-      optional: true
-    "@napi-rs/keyring-win32-x64-msvc":
-      optional: true
-  checksum: 10c0/9df7a4d82ab1e08fafcdbf79e30e162647a6b0493b22e4021340eba19d9113c4c2fdebda933ca720adda7f9c8578d19e84d0dd4b02767d3dabfd19a07cfbcd26
-  languageName: node
-  linkType: hard
-
 "@npmcli/agent@npm:^2.0.0":
   version: 2.2.2
   resolution: "@npmcli/agent@npm:2.2.2"
@@ -693,11 +564,12 @@ __metadata:
   dependencies:
     "@azure/msal-node": "npm:^2.7.0"
     "@azure/msal-node-extensions": "npm:^1.0.16"
-    "@napi-rs/keyring": "npm:^1.1.6"
+    "@azure/msal-node-runtime": "npm:^0.13.6-alpha.0"
     "@swc/core": "npm:^1.4.17"
     "@types/node": "npm:^20.12.7"
     azure-devops-node-api: "npm:^13.0.0"
     commander: "npm:^12.0.0"
+    keytar: "npm:^7.8.0"
     open: "npm:^8.4.0"
     pino: "npm:^9.0.0"
     pino-pretty: "npm:^11.0.0"

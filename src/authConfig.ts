@@ -2,6 +2,7 @@ import { type Configuration, LogLevel } from "@azure/msal-node";
 import { logger } from "./logger";
 
 const DEFAULT_CLIENT_ID = "04f0c124-f2bc-4f59-8241-bf6df9866bbd";
+const TENANT_ID_MICROSOFT = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
 interface AuthConfigOptions {
   clientId?: string;
@@ -13,7 +14,7 @@ export function getAuthConfig({
   tenantId,
 }: AuthConfigOptions): Configuration {
   clientId = clientId || DEFAULT_CLIENT_ID;
-  tenantId = tenantId || "common";
+  tenantId = tenantId || TENANT_ID_MICROSOFT;
 
   const url = new URL(`https://login.microsoftonline.com/${tenantId}`);
 

@@ -36,18 +36,22 @@ async function action({ tenantId, organization, displayName }: Options) {
     tenantId,
   });
 
+  console.log(tokenResponse);
+
   if (!tokenResponse) {
     console.error("Failed to acquire token");
     process.exit(1);
   }
 
   console.log(
-    await getPAT({
-      organization,
-      scope: "vso.packaging_write",
-      displayName,
-      entraIdToken: tokenResponse.accessToken,
-    })
+    JSON.stringify(
+      await getPAT({
+        organization,
+        scope: "vso.packaging_write",
+        displayName,
+        entraIdToken: tokenResponse.accessToken,
+      })
+    )
   );
 }
 

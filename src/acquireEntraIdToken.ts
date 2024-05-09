@@ -6,7 +6,6 @@ import {
 
 import open from "open";
 import { getAuthConfig } from "./authConfig";
-import { create } from "domain";
 import { createTokenCachePlugin } from "./createTokenCachePlugin";
 
 const openBrowser = async (url: string) => {
@@ -37,6 +36,8 @@ export async function acquireEntraIdToken({ tenantId }: { tenantId: string }) {
       account: accounts[0],
       scopes: [adoScope],
     };
+
+    console.log("Acquiring token silently for account:", accounts[0].username);
 
     return pca.acquireTokenSilent(silentRequest).catch((e) => {
       if (e instanceof InteractionRequiredAuthError) {

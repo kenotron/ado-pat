@@ -36,7 +36,7 @@ export async function getPAT({
 
   if (patResponse.ok) {
     const pat = await patResponse.json();
-    return pat.token;
+    return pat;
   } else {
     throw new Error(await patResponse.text());
   }

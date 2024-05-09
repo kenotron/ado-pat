@@ -38,5 +38,10 @@ module.exports = {
     }),
   ],
   target: "node",
-  externals: { "@napi-rs/keyring": "commonjs @napi-rs/keyring" },
+  externals: {
+    "@napi-rs/keyring": "commonjs @napi-rs/keyring",
+    keytar: "commonjs keytar",
+    "@azure/msal-node": "commonjs @azure/msal-node",
+    "@azure/msal-node-extensions": "commonjs @azure/msal-node-extensions",
+  },
 };
