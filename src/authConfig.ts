@@ -26,6 +26,7 @@ export function getAuthConfig({
     system: {
       loggerOptions: {
         loggerCallback(loglevel, message, _containsPii) {
+          // for ado-pat tool, we will convert "info" log level to "trace" to reduce noise
           switch (loglevel) {
             case LogLevel.Error:
               logger.error(message);
@@ -34,10 +35,10 @@ export function getAuthConfig({
               logger.warn(message);
               break;
             case LogLevel.Info:
-              logger.info(message);
+              logger.trace(message);
               break;
             case LogLevel.Verbose:
-              logger.debug(message);
+              logger.trace(message);
               break;
             default:
               logger.info(message);
