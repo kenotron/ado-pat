@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./src/index.ts",
+  entry: "./src/cli.ts",
   output: {
     filename: "index.js",
     path: path.join(__dirname, "dist"),
@@ -15,7 +15,7 @@ module.exports = {
       {
         test: /\.ts$/,
         use: {
-          loader:"swc-loader",
+          loader: "swc-loader",
           options: {
             jsc: {
               target: "es2020",
@@ -27,8 +27,8 @@ module.exports = {
                 decoratorsBeforeExport: true,
               },
             },
-          }
-        }
+          },
+        },
       },
     ],
   },
@@ -38,5 +38,5 @@ module.exports = {
     }),
   ],
   target: "node",
-  externals: ["@napi-rs/keyring"],
+  externals: { "@napi-rs/keyring": "commonjs @napi-rs/keyring" },
 };

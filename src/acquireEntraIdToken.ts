@@ -6,6 +6,8 @@ import {
 
 import open from "open";
 import { getAuthConfig } from "./authConfig";
+import { create } from "domain";
+import { createTokenCachePlugin } from "./createTokenCachePlugin";
 
 const openBrowser = async (url: string) => {
   open(url);
@@ -14,11 +16,14 @@ const openBrowser = async (url: string) => {
 const adoScope = "499b84ac-1321-427f-aa17-267ca6975798/.default";
 
 export async function acquireEntraIdToken({ tenantId }: { tenantId: string }) {
-  const pca = new PublicClientApplication(
-    getAuthConfig({
+  const cachePlugin = await createTokenCachePlugin({ accountName: "ado-pat" });
+
+  const pca = new PublicClientApplication({
+    ...getAuthConfig({
       tenantId,
-    })
-  );
+    }),
+    cache: { cachePlugin },
+  });
 
   const accounts = await pca.getTokenCache().getAllAccounts();
   const loginRequest: InteractiveRequest = {
