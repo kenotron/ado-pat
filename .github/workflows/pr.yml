@@ -32,10 +32,6 @@ jobs:
 
       - run: yarn
 
-      - name: Code Format Check
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: yarn format:check
-
       - name: Check Change Files
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: yarn checkchange
@@ -47,10 +43,7 @@ jobs:
 
       - name: Dependency checks
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: yarn lage depcheck
+        run: yarn depcheck
 
       - name: Build, Test, Lint
         run: yarn ci --concurrency 2 --verbose
-        env:
-          BACKFILL_CACHE_PROVIDER: ${{ secrets.backfill_cache_provider }}
-          BACKFILL_CACHE_PROVIDER_OPTIONS: ${{ secrets.backfill_cache_provider_options }}
