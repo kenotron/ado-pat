@@ -8,7 +8,8 @@
     "build": "tsc",
     "bundle": "webpack --mode=production",
     "release": "beachball publish",
-    "change": "beachball change"
+    "change": "beachball change",
+    "checkchange": "beachball check"
   },
   "dependencies": {
     "@azure/msal-node": "^2.7.0",
