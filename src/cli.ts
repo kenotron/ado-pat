@@ -9,12 +9,18 @@ async function main() {
     program.option("-t, --tenant-id <tenant id>", "Azure AD tenant ID");
     program.option(
       "-d, --display-name <display name>",
-      "Display name for the PAT"
+      "Display name for the PAT",
+      "ado-pat"
+    );
+
+    program.requiredOption(
+      "-o, --organization <org>",
+      "Azure DevOps organization name"
     );
 
     program.option(
-      "-o, --organization <org>",
-      "Azure DevOps organization name"
+      "-a, --account <account>",
+      "Account to use for authentication, if multiple are found"
     );
 
     program.action(action);
@@ -30,11 +36,18 @@ interface Options {
   tenantId: string;
   organization: string;
   displayName: string;
+  account: string;
 }
 
-async function action({ tenantId, organization, displayName }: Options) {
+async function action({
+  tenantId,
+  organization,
+  displayName,
+  account,
+}: Options) {
   const tokenResponse = await acquireEntraIdToken({
     tenantId,
+    ...(account && { account }),
   });
 
   if (!tokenResponse) {
